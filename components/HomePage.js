@@ -35,21 +35,21 @@ function HomePage() {
      }, [coinsData]);
 
      return (
-          <div className='mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center '>
-               <div className='flex w-full flex-col '>
-                    <div className='flex h-14 flex-row items-center space-y-1 border-b border-neutral-700/60 text-lg'>
-                         <p className='w-8 text-left  text-sm'>#</p>
-                         <p className='ml-2 w-36 text-left'>Name</p>
-                         <p className='ml-2 w-36 text-left'>Price</p>
-                         <p className='ml-2 w-36 text-left'>Volume</p>
+          <div className='mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center  text-center'>
+               <div className='mt-10 flex w-full flex-col'>
+                    <div className='flex h-12 flex-row items-center space-y-1 rounded-lg bg-violet-900 px-5 text-lg font-extralight'>
+                         <p className='w-8   text-sm'>#</p>
+                         <p className='ml-2 w-36 '>Name</p>
+                         <p className='ml-2 w-36 '>Price</p>
+                         <p className='ml-2 w-36 '>Volume(24h)</p>
                     </div>
                     {concat?.map((coin, index) => (
-                         <div key={index} className='flex h-16 flex-row items-center space-y-1 border-b border-neutral-700/60'>
-                              <p className='w-8 text-left  text-sm'>{index + 1}</p>
-                              <img src={coin.assets?.svgUrl} className='w-6 rounded-full' />
-                              <p className='ml-2 w-32 text-left'>{coin.ticker}</p>
-                              <p className='ml-2 w-32 text-left'>${coin?.price?.toFixed(2) ?? 'N/A'}</p>
-                              <p className='ml-2 w-32 text-left'>${coin?.volume?.toFixed(0) ?? 'N/A'}</p>
+                         <div key={index} className='flex h-16 flex-row items-center space-y-1 border-b border-violet-700/60 px-5 font-semibold'>
+                              <p className='w-8  text-sm'>{index + 1}</p>
+                              <img src={coin.assets?.svgUrl} className='w-6 rounded-full ml-9' />
+                              <p className='ml-2 w-20 text-left'>{coin.ticker}</p>
+                              <p className='ml-2 w-36 '>${coin?.price?.toFixed(2) ?? '-'}</p>
+                              <p className='ml-2 w-36 '>${coin?.volume?.toLocaleString('en-US', { maximumFractionDigits: 0 }) ?? '-'}</p>
                          </div>
                     ))}
                </div>
