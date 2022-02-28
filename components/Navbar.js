@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function Navbar() {
      return (
-          <div className='mb-24'>
+          <div className='pb-24'>
                <div className='fixed flex h-16 w-full flex-row items-center justify-center border-b border-violet-900/70 bg-black/30 backdrop-blur-sm'>
                     <div className='flex w-full max-w-6xl flex-row items-center justify-between'>
                          <Link href={'/'}>
@@ -25,7 +25,6 @@ function Navbar() {
                          </div>
                     </div>
                </div>
-               ;
           </div>
      );
 }

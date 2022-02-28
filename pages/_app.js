@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 
      return (
           <dataContext.Provider value={{ coins, setCoins, coinsData, setCoinsData, stats, setStats, concat, setConcat }}>
-               <Component {...pageProps} />;
+               <Component {...pageProps} />
           </dataContext.Provider>
      );
 }
