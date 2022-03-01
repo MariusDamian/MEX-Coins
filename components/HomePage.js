@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { dataContext } from '../Util/ContextData';
 import Link from 'next/link';
 import { formatCash } from '../Util/Consts';
+import TableCoins from './CoinTableData';
 
 function HomePage() {
      const { concat, stats } = useContext(dataContext);
@@ -15,6 +16,7 @@ function HomePage() {
                     <p>Transactions {formatCash(stats?.transactions)}</p>
                     <p>Epoch {stats?.epoch}</p>
                </div>
+               <TableCoins />
                <h1 className='mb-2 mt-5 w-full text-left text-2xl'>Tokens</h1>
                <div className='flex w-full flex-col'>
                     <div className='flex h-12 flex-row items-center space-y-1 rounded-t-lg bg-violet-900/75 px-5 text-lg'>

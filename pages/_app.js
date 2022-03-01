@@ -17,28 +17,28 @@ function MyApp({ Component, pageProps }) {
      // Concat
      const [concat, setConcat] = useState([]);
 
-     useEffect(() => {
-          axios.get(coinsList).then((response) => {
-               setCoins(response.data);
-          });
-     }, []);
+     // useEffect(async () => {
+     //      await axios.get(coinsList).then((response) => {
+     //           setCoins(response.data);
+     //      });
+     // }, []);
+
+     // useEffect(() => {
+     //      axios.get(coinsPrices)
+     //           .then((response) => {
+     //                setCoinsData(response.data.filter((qwe) => qwe.baseId !== 'USDC-c76f1f' && qwe.quoteName !== 'holoride'));
+     //           })
+     //           .then(() => {
+     //                coins.map((coin, index) => coinsData.map((data, key) => (coin.identifier === data.baseId ? Object.assign(coin, { price: data.basePrice }, { volume: data.volume24h }, { mCap: data.totalValue }) : '')));
+     //                setConcat(coins);
+     //           });
+     // }, [coins]);
 
      useEffect(() => {
           axios.get(statsMex).then((response) => {
                setStats(response.data);
           });
      }, []);
-
-     useEffect(() => {
-          axios.get(coinsPrices)
-               .then((response) => {
-                    setCoinsData(response.data.filter((qwe) => qwe.baseId !== 'USDC-c76f1f' && qwe.quoteName !== 'holoride'));
-               })
-               .then(() => {
-                    coins.map((coin, index) => coinsData.map((data, key) => (coin.identifier === data.baseId ? Object.assign(coin, { price: data.basePrice }, { volume: data.volume24h }, { mCap: data.totalValue }) : '')));
-                    setConcat(coins);
-               });
-     }, [coins]);
 
      return (
           <dataContext.Provider value={{ coins, setCoins, coinsData, setCoinsData, stats, setStats, concat, setConcat }}>
