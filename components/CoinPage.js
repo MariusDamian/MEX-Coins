@@ -44,7 +44,7 @@ function CoinPage() {
                          <BsTelegram className='cursor-not-allowed text-2xl opacity-30' />
                     )}
                </div>
-               <p className='mt-5 text-2xl font-semibold'>Current Price - ${currentCoinData?.basePrice?.toFixed(3)}</p>
+               <p className='mt-5 text-2xl font-semibold'>Current Price - ${currentCoinData?.basePrice?.toFixed(5)}</p>
                <p className='mt-3 max-w-2xl text-lg'>{currentCoin?.assets?.description}</p>
           </div>
      );

@@ -33,9 +33,9 @@ function HomePage() {
                                         <p className='ml-2 w-20 text-left text-lg hover:text-violet-400'>{coin.ticker}</p>
                                    </a>
                               </Link>
-                              <p className='ml-2 w-36 '>{coin.price ? `$${coin?.price?.toFixed(2)}` : ''}</p>
-                              <p className='ml-2 w-36 '>{coin.volume ? ` $${formatCash(coin?.volume)} ` : ''}</p>
-                              <p className='ml-2 w-36 '>{coin.volume ? ` $${formatCash(coin?.mCap)} ` : ''}</p>
+                              <p className='ml-2 w-36 '>{coinsData.find((price) => price.baseId === coin.identifier)?.basePrice?.toFixed(2)}</p>
+                              <p className='ml-2 w-36 '>{formatCash(coinsData.find((price) => price.baseId === coin.identifier)?.volume24h)}</p>
+                              <p className='ml-2 w-36 '>{formatCash(coinsData.find((price) => price.baseId === coin.identifier)?.totalValue)}</p>
                          </div>
                     ))}
                </div>
