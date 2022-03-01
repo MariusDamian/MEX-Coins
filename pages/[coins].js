@@ -8,9 +8,9 @@ import CoinPage from '../components/CoinPage';
 export default function Home() {
      const router = useRouter();
      const { coins } = router.query;
-     const { concat } = useContext(dataContext);
+     const { coinsSocial } = useContext(dataContext);
 
-     let currentCoin = concat.find((coin) => coin.ticker === coins);
+     let currentCoin = coinsSocial?.find((coin) => coin.ticker === coins);
 
      return (
           <div>

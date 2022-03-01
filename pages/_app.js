@@ -2,37 +2,26 @@ import '../styles/globals.css';
 import { useState, useEffect } from 'react';
 import { dataContext } from '../Util/ContextData';
 import axios from 'axios';
-import { coinsPrices, coinsList, statsMex } from '../Util/Consts';
+import useSWR from 'swr';
+import { coinsPrices, coinsList, statsMex, socialFetcher, priceFetcher } from '../Util/Consts';
 
 function MyApp({ Component, pageProps }) {
-     //   Coins Fetch
-     const [coins, setCoins] = useState([]);
+     const { data: socialData } = useSWR('tableCoins', socialFetcher);
+     const { data: priceData } = useSWR('priceCoins', priceFetcher);
 
-     //   Coins Fetch
+     const [coinsSocial, setCoinsSocial] = useState([]);
+
+     useEffect(() => {
+          setCoinsSocial(socialData);
+     }, [socialData]);
+
      const [coinsData, setCoinsData] = useState([]);
 
-     //   Stats
+     useEffect(() => {
+          setCoinsData(priceData);
+     }, [priceData]);
+
      const [stats, setStats] = useState([]);
-
-     // Concat
-     const [concat, setConcat] = useState([]);
-
-     // useEffect(async () => {
-     //      await axios.get(coinsList).then((response) => {
-     //           setCoins(response.data);
-     //      });
-     // }, []);
-
-     // useEffect(() => {
-     //      axios.get(coinsPrices)
-     //           .then((response) => {
-     //                setCoinsData(response.data.filter((qwe) => qwe.baseId !== 'USDC-c76f1f' && qwe.quoteName !== 'holoride'));
-     //           })
-     //           .then(() => {
-     //                coins.map((coin, index) => coinsData.map((data, key) => (coin.identifier === data.baseId ? Object.assign(coin, { price: data.basePrice }, { volume: data.volume24h }, { mCap: data.totalValue }) : '')));
-     //                setConcat(coins);
-     //           });
-     // }, [coins]);
 
      useEffect(() => {
           axios.get(statsMex).then((response) => {
@@ -41,7 +30,7 @@ function MyApp({ Component, pageProps }) {
      }, []);
 
      return (
-          <dataContext.Provider value={{ coins, setCoins, coinsData, setCoinsData, stats, setStats, concat, setConcat }}>
+          <dataContext.Provider value={{ coinsSocial, setCoinsSocial, coinsData, setCoinsData, stats, setStats }}>
                <Component {...pageProps} />
           </dataContext.Provider>
      );

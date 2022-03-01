@@ -9,3 +9,14 @@ export const formatCash = (n) => {
 export const coinsList = 'https://api.elrond.com/tokens?size=43';
 export const coinsPrices = 'https://api.elrond.com/mex-pairs';
 export const statsMex = 'https://api.elrond.com/stats';
+
+export const socialFetcher = async () => {
+     const coins = await fetch(coinsList);
+     const allCoins = await coins.json();
+     return allCoins;
+};
+export const priceFetcher = async () => {
+     const coins = await fetch(coinsPrices);
+     const priceCoins = await coins.json();
+     return priceCoins;
+};

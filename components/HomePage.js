@@ -1,12 +1,11 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { dataContext } from '../Util/ContextData';
 import Link from 'next/link';
 import { formatCash } from '../Util/Consts';
-import TableCoins from './CoinTableData';
 
 function HomePage() {
-     const { concat, stats } = useContext(dataContext);
+     const { coinsSocial, stats, coinsData } = useContext(dataContext);
 
      return (
           <div className='mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-start  text-center'>
@@ -16,7 +15,6 @@ function HomePage() {
                     <p>Transactions {formatCash(stats?.transactions)}</p>
                     <p>Epoch {stats?.epoch}</p>
                </div>
-               <TableCoins />
                <h1 className='mb-2 mt-5 w-full text-left text-2xl'>Tokens</h1>
                <div className='flex w-full flex-col'>
                     <div className='flex h-12 flex-row items-center space-y-1 rounded-t-lg bg-violet-900/75 px-5 text-lg'>
@@ -26,7 +24,7 @@ function HomePage() {
                          <p className='ml-2 w-36 '>Volume(24h)</p>
                          <p className='ml-2 w-36 '>Market Cap</p>
                     </div>
-                    {concat?.map((coin, index) => (
+                    {coinsSocial?.map((coin, index) => (
                          <div key={index} className='flex h-16 flex-row items-center space-y-1 border-b border-violet-700/40 bg-violet-900/10 px-5'>
                               <p className='w-4  text-sm'>{index + 1}</p>
                               <Link href={coin.ticker}>
