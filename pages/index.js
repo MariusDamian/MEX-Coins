@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 export default function Home() {
      return (
-          <div>
+          <div className='mb-20'>
                <Head>
                     <title>Avchain | Maiar Exchange Coins</title>
                     <meta name='description' content='Maiar Exchange Coins' />

@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { dataContext } from '../Util/ContextData';
 import Link from 'next/link';
+import { formatCash } from '../Util/Consts';
 
 function HomePage() {
      const { concat, stats } = useContext(dataContext);
@@ -19,6 +20,7 @@ function HomePage() {
                          <p className='ml-2 w-36 '>Name</p>
                          <p className='ml-2 w-36 '>Price</p>
                          <p className='ml-2 w-36 '>Volume(24h)</p>
+                         <p className='ml-2 w-36 '>Market Cap</p>
                     </div>
                     {concat?.map((coin, index) => (
                          <div key={index} className='flex h-16 flex-row items-center space-y-1 border-b border-violet-700/40 bg-violet-900/10 px-5'>
@@ -30,7 +32,8 @@ function HomePage() {
                                    </a>
                               </Link>
                               <p className='ml-2 w-36 '>{coin?.price?.toFixed(4) ?? '-'}</p>
-                              <p className='ml-2 w-36 '>{coin.volume ? ` $${coin?.volume?.toLocaleString('en-US', { maximumFractionDigits: 0 })} ` : ''}</p>
+                              <p className='ml-2 w-36 '>{coin.volume ? ` $${formatCash(coin?.volume)} ` : ''}</p>
+                              <p className='ml-2 w-36 '>{coin.volume ? ` $${formatCash(coin?.mCap)} ` : ''}</p>
                          </div>
                     ))}
                </div>
