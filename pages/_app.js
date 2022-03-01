@@ -26,7 +26,6 @@ function MyApp({ Component, pageProps }) {
      useEffect(() => {
           axios.get(statsMex).then((response) => {
                setStats(response.data);
-               console.log(stats);
           });
      }, []);
 

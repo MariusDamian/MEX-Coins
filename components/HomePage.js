@@ -9,11 +9,13 @@ function HomePage() {
 
      return (
           <div className='mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-start  text-center'>
+               <h1 className='mb-2 w-full text-left text-2xl'>Stats</h1>
                <div className='mb-3 flex w-full flex-row items-start space-x-6 font-semibold'>
-                    <p>Accounts {stats.accounts}</p>
-                    <p>Transactions {stats.transactions}</p>
-                    <p>Epoch {stats.epoch}</p>
+                    <p>Accounts {formatCash(stats?.accounts)}</p>
+                    <p>Transactions {formatCash(stats?.transactions)}</p>
+                    <p>Epoch {stats?.epoch}</p>
                </div>
+               <h1 className='mb-2 mt-5 w-full text-left text-2xl'>Tokens</h1>
                <div className='flex w-full flex-col'>
                     <div className='flex h-12 flex-row items-center space-y-1 rounded-t-lg bg-violet-900/75 px-5 text-lg'>
                          <p className='w-4 text-base'>#</p>
@@ -31,7 +33,7 @@ function HomePage() {
                                         <p className='ml-2 w-20 text-left text-lg hover:text-violet-400'>{coin.ticker}</p>
                                    </a>
                               </Link>
-                              <p className='ml-2 w-36 '>{coin?.price?.toFixed(4) ?? '-'}</p>
+                              <p className='ml-2 w-36 '>{coin.price ? `$${coin?.price?.toFixed(2)}` : ''}</p>
                               <p className='ml-2 w-36 '>{coin.volume ? ` $${formatCash(coin?.volume)} ` : ''}</p>
                               <p className='ml-2 w-36 '>{coin.volume ? ` $${formatCash(coin?.mCap)} ` : ''}</p>
                          </div>
